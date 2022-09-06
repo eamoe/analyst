@@ -2,3 +2,12 @@
 # Найдите произведение элементов на позициях a и b.
 # Значения N, a и b вводит пользователь с клавиатуры.
 
+number = int(input("Введите число N: "))
+
+numbers_list = [*range(-number, (number + 1), 1)]
+
+a = int(input("Введите позицию a: "))
+b = int(input("Введите позицию b: "))
+
+print(f"Список элементов: {numbers_list}")
+print(f"Произведение элементов на позициях {a} и {b} равно: {numbers_list[a - 1] * numbers_list[b - 1]}")
