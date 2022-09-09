@@ -14,14 +14,20 @@ def max_diff_fraction(input_list):
     min_fraction = input_list[0] - int(input_list[0])
     max_fraction = input_list[0] - int(input_list[0])
     for item in input_list:
-        if str(item).find('.') != -1:
+        if item - int(item) == 0.0:
+            if str(item).find('.') != -1:
+                min_fraction = 0.0
+        else:
             fraction = item - int(item)
             if fraction > max_fraction:
                 max_fraction = fraction
             elif fraction < min_fraction:
                 min_fraction = fraction
-    output = int((max_fraction - min_fraction) * (10 ** get_fraction_length(min_fraction)))
-    return output / (10 ** get_fraction_length(min_fraction))
+    if min_fraction == 0.0:
+        output = round(max_fraction, get_fraction_length(max_fraction))
+    else:
+        output = int((max_fraction - min_fraction) * (10 ** get_fraction_length(min_fraction))) / (10 ** get_fraction_length(min_fraction))
+    return output 
 
 input_list = [1.1, 1.2, 3.1, 5, 10.01]
 
