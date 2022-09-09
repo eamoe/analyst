@@ -13,4 +13,4 @@ def calc_odd_pos_sum(list):
 input_list = [2, 3, 5, 9, 3]
 
 print(f"Список: {input_list}")
-print(f"Сумма элементов списка, стоящих на нечётной позиции равна: {calc_odd_pos_sum(input_list)}")
+print(f"Сумма элементов списка, стоящих на нечётной позиции, равна: {calc_odd_pos_sum(input_list)}")
