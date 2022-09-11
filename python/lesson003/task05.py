@@ -9,14 +9,11 @@ import math
 fib_numbers = {}
 
 def fibonacci(number):
-    if number == 0:
-        return 0
-    elif number == 1:
-        return 1
-    else:
-        if number not in fib_numbers:
-            fib_numbers[number] = fibonacci(number - 1) + fibonacci(number - 2)
-        return fib_numbers[number]
+    fib_numbers[0] = 0
+    fib_numbers[1] = 1
+    if number not in fib_numbers:
+        fib_numbers[number] = fibonacci(number - 1) + fibonacci(number - 2)
+    return fib_numbers[number]
 
 number = int(input("Введите целое число: "))
 
