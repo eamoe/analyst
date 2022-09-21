@@ -26,8 +26,11 @@ print(f"(OLD) Набор произведений для числа {number}: {f
 
 # Новое решение
 def create_factorial_list(n):
-    factorial = lambda x: 1 if x == 0 else x * factorial(x - 1)
-    return [factorial(i) for i in range(1, n + 1)]
+    factorial_new = lambda x: 1 if x == 0 else x * factorial_new(x - 1)
+    return [factorial_new(i) for i in range(1, n + 1)]
+
+
+number = int(input("Введите целое положительное число: "))
 
 output_message = f"(NEW) Набор произведений для числа {number}: "
 print(output_message, create_factorial_list(number))
