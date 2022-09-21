@@ -7,6 +7,7 @@
 # а программа - определять количество вхождений одной строки в другой.
 # Пример: "abababb" и "aba" -> 2
 
+
 def count_substrings(main_string, substring):
       counter = 0
       for pos in range(len(main_string) - len(substring) + 1):
@@ -22,10 +23,11 @@ print(f"(OLD) Количество вхождений: {count_substrings(initial
 
 
 # Новое решение
-def count_substrings_new(in_str, substr):
-      in_lenght = len(in_str)
-      sub_length = len(substr)
-      occurences = [i for i in range(in_lenght - sub_length + 1) if in_str[i:i + sub_length] == substr]
+def count_substrings_new(in_str, sub_str):
+      in_len = len(in_str)
+      sub_len = len(sub_str)
+      stop = in_len - sub_len + 1
+      occurences = [i for i in range(stop) if in_str[i : i + sub_len] == sub_str]
       return len(occurences)
 
 
