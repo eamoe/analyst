@@ -34,4 +34,6 @@ def fibonacci_list_new(number):
     return [a * b for a, b in zip(fibs, signs)]
 
 
-print(f"(NEW) Список чисел Фибоначчи: {fibonacci_list_new(number)}")
+number_new = int(input("Введите целое число: "))
+
+print(f"(NEW) Список чисел Фибоначчи: {fibonacci_list_new(number_new)}")
