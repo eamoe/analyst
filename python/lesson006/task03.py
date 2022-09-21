@@ -36,8 +36,10 @@ def mult_pairs_new(in_list):
     if half_len == 0:
         return [in_list[0]**2]
     else:
-        return [a * b for a, b in zip(in_list[0:half_len + 1], in_list[:half_len - 1:-1])]
+        return [a * b for a, b in zip(in_list[0 : half_len + 1], in_list[: half_len - 1 : -1])]
 
+
+input_list_new = [10, 2, 7]
 
 print(f"Список: {input_list}")
-print(f"(NEW) Произведение пар чисел списка: {mult_pairs_new(input_list)}")
+print(f"(NEW) Произведение пар чисел списка: {mult_pairs_new(input_list_new)}")
