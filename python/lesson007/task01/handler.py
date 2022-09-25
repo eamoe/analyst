@@ -19,7 +19,7 @@ def get_file_name(menu_item):
         case 5:
             return constants.exported_phonebook_file_name
         case 6:
-            return input("укажите путь к файлу: ")
+            return input("Укажите путь к файлу: ")
         case __:
             return -1
     
