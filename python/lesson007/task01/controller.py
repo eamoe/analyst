@@ -16,6 +16,4 @@ def start_app():
         is_exit = exit(menu_item)
         if menu_item != -1:
             handler.command_handler(menu_item)
-        else:
-            pass
     print("Работа завершена!")
