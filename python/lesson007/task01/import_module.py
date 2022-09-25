@@ -13,19 +13,23 @@ def import_data(file_name):
     
     data_to_import = []
     data_str = ""
+    
     if import_format_option == 1:
+    
         with open(imported_db_path, 'r') as file:
             lines = file.readlines()
-            for line in lines:
-                if line == '\n':
-                    data_str = data_str[:-1]
-                    data_str += '\n'
-                    data_to_import.append(data_str)
-                    data_str = ""
-                else:
-                    line = line.replace("\n", "")
-                    data_str += line
-                    data_str += ';'
+    
+        for line in lines:
+            if line == '\n':
+                data_str = data_str[:-1]
+                data_str += '\n'
+                data_to_import.append(data_str)
+                data_str = ""
+            else:
+                line = line.replace("\n", "")
+                data_str += line
+                data_str += ';'
+
     elif import_format_option == 2:
         with open(imported_db_path, 'r') as file:
             lines = file.readlines()
