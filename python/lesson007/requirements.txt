@@ -1,0 +1,4 @@
+console_menu==0.7.1
+consolemenu==1.0.1
+tabulate==0.8.10
+unique_id==1.0.1
