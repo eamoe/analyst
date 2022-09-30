@@ -106,5 +106,4 @@ while not is_game_over(game_state):
     game_state = update_state(game_state, row, column, symbol)
     print_field(game_state)
 
-
 print("Игра окончена!")
