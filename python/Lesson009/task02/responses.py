@@ -6,6 +6,7 @@ colon = ':'
 
 
 def sample_responses(input_text):
+
     if str(input_text).find(colon) == -1:
         return messages.missing_colon_error
     else:
