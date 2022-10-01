@@ -1,4 +1,4 @@
-API_KEY = '5445479452:AAHg3ncDA16fbh-cXeuSy5ysBZ6M0djq0no'
+API_KEY = 'YOUR_TELEGRAM_BOT_API_KEY'
 
 welcome_message = 'Привет! Если нужна помощь, выберите команду /help'
 
