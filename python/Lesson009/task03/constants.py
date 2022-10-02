@@ -25,4 +25,5 @@ exported_phonebook_file_name = "exported_phonebook_db"
 
 contact_id_length = 7
 
-continue_message = "\nНажмите Enter, чтобы продолжить!"
+export_format_1 = "export_format_1"
+export_format_2 = "export_format_2"
