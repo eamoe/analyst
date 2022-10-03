@@ -2,6 +2,7 @@ import constants
 import reader
 from datetime import datetime as dt
 import action
+import logger
 
 
 def update(file_name, global_action, user_message):
@@ -13,29 +14,34 @@ def update(file_name, global_action, user_message):
 def update_item(path, global_action, user_message):
     response_str = ""
     if global_action == "":
+        logger.log_data(user_message, "Command")
         response_str += reader.read_contacts(path)
         response_str += f"Укажите ID изменяемой записи"
         action.set_action("update_first_name")
         return response_str
     elif global_action == "update_first_name":
+        logger.log_data(user_message, "Enter ID")
         temp_data = action.read_temp_data() + user_message + ';'
         action.write_temp_data(temp_data)
         action.set_action("update_last_name")
         response_str += f"Укажите новое имя или введите '/', чтобы оставить прошлое значение"
         return response_str
     elif global_action == "update_last_name":
+        logger.log_data(user_message, "Enter first name")
         temp_data = action.read_temp_data() + user_message + ';'
         action.write_temp_data(temp_data)
         action.set_action("update_phone_number")
         response_str += f"Укажите новую фамилию или введите '/', чтобы оставить прошлое значение"
         return response_str
     elif global_action == "update_phone_number":
+        logger.log_data(user_message, "Enter last name")
         temp_data = action.read_temp_data() + user_message + ';'
         action.write_temp_data(temp_data)
         action.set_action("update_contact")
         response_str += f"Укажите новый телефон или введите '/', чтобы оставить прошлое значение"
         return response_str
     elif global_action == "update_contact":
+        logger.log_data(user_message, "Enter phone number")
         temp_data = action.read_temp_data() + user_message + ';'
         temp_data_list = str(temp_data).split(";")
         contact_id = temp_data_list[0]

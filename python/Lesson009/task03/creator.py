@@ -2,6 +2,7 @@ from unique_id import *
 from datetime import datetime as dt
 import constants
 import action
+import logger
 
 
 def generate_id():
@@ -17,20 +18,24 @@ def create_item(file_name, global_action, user_message):
 
 def create_contact(path, global_action, user_message):
     if global_action == "":
+        logger.log_data(user_message, "Command")
         action.write_temp_data("")
         action.set_action("add_last_name")
         return f"Укажите имя"
     elif global_action == "add_last_name":
+        logger.log_data(user_message, "Enter first name")
         temp_data = action.read_temp_data() + user_message + ';'
         action.write_temp_data(temp_data)
         action.set_action("add_phone_number")
         return f"Укажите фамилию"
     elif global_action == "add_phone_number":
+        logger.log_data(user_message, "Enter last name")
         temp_data = action.read_temp_data() + user_message + ';'
         action.write_temp_data(temp_data)
         action.set_action("create_contact")
         return f"Укажите телефон"
     elif global_action == "create_contact":
+        logger.log_data(user_message, "Enter phone number")
         temp_data = action.read_temp_data() + user_message + ';'
         temp_data_list = str(temp_data).split(";")
         contact_id = str(generate_id()).lower()

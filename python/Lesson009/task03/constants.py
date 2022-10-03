@@ -1,4 +1,4 @@
-API_KEY = '5445479452:AAHg3ncDA16fbh-cXeuSy5ysBZ6M0djq0no'
+API_KEY = 'YOUR_API_KEY'
 
 db_file_name = "phonebook_db"
 
@@ -27,3 +27,9 @@ contact_id_length = 7
 
 export_format_1 = "export_format_1"
 export_format_2 = "export_format_2"
+
+log_file_name = "log.csv"
+
+
+def imported_file_name():
+    return folder + "imported_database.txt"

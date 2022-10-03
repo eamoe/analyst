@@ -8,6 +8,8 @@ from telegram.ext import *
 import phonebook_menu
 import responses
 import export_module
+import import_module
+import logger
 
 
 def start_command(update, context):
@@ -27,25 +29,22 @@ def handle_message(update, context):
 
 
 def export_database_command(update, context):
-    chat_id = str(update.message.chat_id)
-    path = constants.folder + constants.phonebook_db_file_name + '.csv'
-    export_module.generate_export_files()
+    export_module.send_files(update, context)
 
-    update.message.reply_text("Файлы сгенерированы в 2-х форматах".upper())
 
-    update.message.reply_text("Формат 1")
-    with open(constants.folder + constants.export_format_1 + '.txt', "rb") as file:
-        context.bot.send_document(chat_id=chat_id, document=file,
-                                  filename=constants.export_format_1 + '.txt')
-
-    update.message.reply_text("Формат 2")
-    with open(constants.folder + constants.export_format_2 + '.txt', "rb") as file:
-        context.bot.send_document(chat_id=chat_id, document=file,
-                                  filename=constants.export_format_2 + '.txt')
+def import_database_command(update, context):
+    update.message.reply_text("Загрузите файл со споском контактов")
 
 
 def error(update, context):
     print(f"Update {update} caused error {context.error}")
+
+
+def handle_import_file(update, context):
+    context.bot.get_file(update.message.document).download(custom_path=constants.imported_file_name())
+    response = import_module.upload_database(constants.imported_file_name())
+    update.message.reply_text(response)
+    logger.log_data("a new file imported", response)
 
 
 def main():
@@ -58,6 +57,8 @@ def main():
     dp.add_handler(CommandHandler("start", start_command))
     dp.add_handler(CommandHandler("help", phone_book_command))
     dp.add_handler(CommandHandler("exportcontacts", export_database_command))
+    dp.add_handler(CommandHandler("importcontacts", import_database_command))
+    dp.add_handler(MessageHandler(Filters.document, handle_import_file))
 
     dp.add_handler(MessageHandler(Filters.text, handle_message))
 

@@ -1,6 +1,6 @@
 import constants
-import reader
 import action
+import logger
 
 
 def search(file_name, global_action, user_message):
@@ -12,22 +12,26 @@ def search(file_name, global_action, user_message):
 def search_data(path, global_action, user_message):
     response_str = ""
     if global_action == "":
+        logger.log_data(user_message, "Command")
         response_str += f"Имя: укажите значение для поиска или '/', чтобы пропустить данный критерий"
         action.set_action("find_last_name")
         return response_str
     elif global_action == "find_last_name":
+        logger.log_data(user_message, "Find name")
         temp_data = action.read_temp_data() + user_message + ';'
         action.write_temp_data(temp_data)
         action.set_action("find_phone_number")
         response_str += f"Фамилия: укажите значение для поиска или '/', чтобы пропустить данный критерий"
         return response_str
     elif global_action == "find_phone_number":
+        logger.log_data(user_message, "Find last name")
         temp_data = action.read_temp_data() + user_message + ';'
         action.write_temp_data(temp_data)
         action.set_action("find_contact")
         response_str += f"Телефон: укажите значение для поиска или '/', чтобы пропустить данный критерий"
         return response_str
     elif global_action == "find_contact":
+        logger.log_data(user_message, "Find phone number")
         temp_data = action.read_temp_data() + user_message + ';'
         temp_data_list = str(temp_data).split(";")
         first_name = temp_data_list[0]
